@@ -8,8 +8,21 @@
 	import Saturn from './Saturn.svelte';
 	import Uranus from './Uranus.svelte';
 	import Venus from './Venus.svelte';
+	import Hamburger from './Hamburger.svelte';
+	import MediaQuery from './MediaQuery.svelte';
+
+	import IconChevron from '../assests/icon-chevron.svg';
 
 	export let menu = 1;
+
+	export let open = false;
+	export let onClick = (): void => {
+		open = !open;
+	};
+
+	//screen dectection
+	let innerWidth = 0;
+	let innerHeight = 0;
 </script>
 
 <svelte:head>
@@ -24,22 +37,93 @@
 	/>
 </svelte:head>
 
+<svelte:window bind:innerWidth bind:innerHeight />
+
 <div class="background">
 	<div class="nav-container">
 		<div class="page-title">
 			<h2>Planet Facts</h2>
 		</div>
-		<ul id="menu">
-			<li><a href="/" on:click|preventDefault={() => (menu = 1)}>Mercury</a></li>
-			<li><a href="/" on:click|preventDefault={() => (menu = 2)}>Venus</a></li>
-			<li><a href="/" on:click|preventDefault={() => (menu = 3)}>Earth</a></li>
-			<li><a href="/" on:click|preventDefault={() => (menu = 4)}>Mars</a></li>
-			<li><a href="/" on:click|preventDefault={() => (menu = 5)}>Jupiter</a></li>
-			<li><a href="/" on:click|preventDefault={() => (menu = 6)}>Saturn</a></li>
-			<li><a href="/" on:click|preventDefault={() => (menu = 7)}>Uranus</a></li>
-			<li><a href="/" on:click|preventDefault={() => (menu = 8)}>Neptune</a></li>
-		</ul>
+		{#if innerWidth > 600}
+			<ul id="menu">
+				<li><a href="/" on:click|preventDefault={() => (menu = 1)}>Mercury</a></li>
+				<li><a href="/" on:click|preventDefault={() => (menu = 2)}>Venus</a></li>
+				<li><a href="/" on:click|preventDefault={() => (menu = 3)}>Earth</a></li>
+				<li><a href="/" on:click|preventDefault={() => (menu = 4)}>Mars</a></li>
+				<li><a href="/" on:click|preventDefault={() => (menu = 5)}>Jupiter</a></li>
+				<li><a href="/" on:click|preventDefault={() => (menu = 6)}>Saturn</a></li>
+				<li><a href="/" on:click|preventDefault={() => (menu = 7)}>Uranus</a></li>
+				<li><a href="/" on:click|preventDefault={() => (menu = 8)}>Neptune</a></li>
+			</ul>
+		{/if}
+
+		{#if innerWidth <= 600}
+			<Hamburger {open} {onClick} />
+		{/if}
 	</div>
+
+	{#if innerWidth <= 600}
+		{#if open}
+			<nav class="mobile-nav">
+				<li>
+					<div class="planet-selector">
+						<div class="planet-icon" />
+						<a href="/" on:click|preventDefault={() => (menu = 1)}>Mercury</a>
+					</div>
+					<img src={IconChevron} alt="selector" />
+				</li>
+				<li>
+					<div class="planet-selector">
+						<div class="planet-icon" />
+						<a href="/" on:click|preventDefault={() => (menu = 2)}>Venus</a>
+					</div>
+					<img src={IconChevron} alt="selector" />
+				</li>
+				<li>
+					<div class="planet-selector">
+						<div class="planet-icon" />
+						<a href="/" on:click|preventDefault={() => (menu = 3)}>Earth</a>
+					</div>
+					<img src={IconChevron} alt="selector" />
+				</li>
+				<li>
+					<div class="planet-selector">
+						<div class="planet-icon" />
+						<a href="/" on:click|preventDefault={() => (menu = 4)}>Mars</a>
+					</div>
+					<img src={IconChevron} alt="selector" />
+				</li>
+				<li>
+					<div class="planet-selector">
+						<div class="planet-icon" />
+						<a href="/" on:click|preventDefault={() => (menu = 5)}>Jupiter</a>
+					</div>
+					<img src={IconChevron} alt="selector" />
+				</li>
+				<li>
+					<div class="planet-selector">
+						<div class="planet-icon" />
+						<a href="/" on:click|preventDefault={() => (menu = 6)}>Saturn</a>
+					</div>
+					<img src={IconChevron} alt="selector" />
+				</li>
+				<li>
+					<div class="planet-selector">
+						<div class="planet-icon" />
+						<a href="/" on:click|preventDefault={() => (menu = 7)}>uranus</a>
+					</div>
+					<img src={IconChevron} alt="selector" />
+				</li>
+				<li>
+					<div class="planet-selector">
+						<div class="planet-icon" />
+						<a href="/" on:click|preventDefault={() => (menu = 8)}>Neptune</a>
+					</div>
+					<img src={IconChevron} alt="selector" />
+				</li>
+			</nav>
+		{/if}
+	{/if}
 	{#if menu === 1}
 		<Mercury />
 	{:else if menu === 2}
@@ -59,6 +143,9 @@
 	{:else}
 		<h1>Page Not Found</h1>
 	{/if}
+
+	<h2>inner Width: {innerWidth}</h2>
+	<h2>innher height: {innerHeight}</h2>
 </div>
 
 <style global>
@@ -132,6 +219,61 @@
 		}
 	}
 
-	@media (max-width: 400px) {
+	@media (max-width: 600px) {
+		.nav-container {
+			flex-direction: row;
+		}
+
+		.nav-container .page-title {
+			padding: 0;
+			margin: 0;
+		}
+		.mobile-nav {
+			background-color: #070724;
+			position: absolute;
+			height: 100vh;
+			width: 85%;
+			display: flex;
+			flex-direction: column;
+			padding: 22px 24px 0px 24px;
+		}
+
+		.mobile-nav img {
+			height: 8px;
+			width: 4px;
+			padding-right: 10px;
+		}
+
+		.mobile-nav a {
+			text-decoration: none;
+			color: white;
+			font-family: 'League Spartan', sans-serif;
+			font-size: 15px;
+			font-weight: 700;
+			line-height: 25px;
+			padding-left: 25px;
+		}
+
+		.mobile-nav li {
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			flex-direction: row;
+			padding-bottom: 22px;
+			padding-top: 22px;
+			border-bottom: 1px solid white;
+		}
+		.planet-selector {
+			display: flex;
+			flex-direction: row;
+			width: 200px;
+		}
+
+		.planet-icon {
+			height: 20px;
+			width: 20px;
+			border-radius: 10px;
+			background-color: white;
+		}
 	}
 </style>
