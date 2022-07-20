@@ -16,9 +16,14 @@
 	export let menu = 1;
 
 	export let open = false;
-	export let onClick = (): void => {
+	export let toggleNav = (): void => {
 		open = !open;
 	};
+
+	export function toggleMobileNav(num) {
+		toggleNav();
+		menu = num;
+	}
 
 	//screen dectection
 	let innerWidth = 0;
@@ -46,7 +51,9 @@
 		</div>
 		{#if innerWidth > 600}
 			<ul id="menu">
-				<li><a href="/" on:click|preventDefault={() => (menu = 1)}>Mercury</a></li>
+				<li>
+					<a href="/" on:click|preventDefault={() => (menu = 1)}>Mercury</a>
+				</li>
 				<li><a href="/" on:click|preventDefault={() => (menu = 2)}>Venus</a></li>
 				<li><a href="/" on:click|preventDefault={() => (menu = 3)}>Earth</a></li>
 				<li><a href="/" on:click|preventDefault={() => (menu = 4)}>Mars</a></li>
@@ -58,7 +65,7 @@
 		{/if}
 
 		{#if innerWidth <= 600}
-			<Hamburger {open} {onClick} />
+			<Hamburger {open} {toggleNav} />
 		{/if}
 	</div>
 
@@ -68,56 +75,56 @@
 				<li>
 					<div class="planet-selector">
 						<div class="planet-icon" />
-						<a href="/" on:click|preventDefault={() => (menu = 1)}>Mercury</a>
+						<a href="/" on:click|preventDefault={() => toggleMobileNav(1)}>Mercury</a>
 					</div>
 					<img src={IconChevron} alt="selector" />
 				</li>
 				<li>
 					<div class="planet-selector">
 						<div class="planet-icon" />
-						<a href="/" on:click|preventDefault={() => (menu = 2)}>Venus</a>
+						<a href="/" on:click|preventDefault={() => toggleMobileNav(2)}>Venus</a>
 					</div>
 					<img src={IconChevron} alt="selector" />
 				</li>
 				<li>
 					<div class="planet-selector">
 						<div class="planet-icon" />
-						<a href="/" on:click|preventDefault={() => (menu = 3)}>Earth</a>
+						<a href="/" on:click|preventDefault={() => toggleMobileNav(3)}>Earth</a>
 					</div>
 					<img src={IconChevron} alt="selector" />
 				</li>
 				<li>
 					<div class="planet-selector">
 						<div class="planet-icon" />
-						<a href="/" on:click|preventDefault={() => (menu = 4)}>Mars</a>
+						<a href="/" on:click|preventDefault={() => toggleMobileNav(4)}>Mars</a>
 					</div>
 					<img src={IconChevron} alt="selector" />
 				</li>
 				<li>
 					<div class="planet-selector">
 						<div class="planet-icon" />
-						<a href="/" on:click|preventDefault={() => (menu = 5)}>Jupiter</a>
+						<a href="/" on:click|preventDefault={() => toggleMobileNav(5)}>Jupiter</a>
 					</div>
 					<img src={IconChevron} alt="selector" />
 				</li>
 				<li>
 					<div class="planet-selector">
 						<div class="planet-icon" />
-						<a href="/" on:click|preventDefault={() => (menu = 6)}>Saturn</a>
+						<a href="/" on:click|preventDefault={() => toggleMobileNav(6)}>Saturn</a>
 					</div>
 					<img src={IconChevron} alt="selector" />
 				</li>
 				<li>
 					<div class="planet-selector">
 						<div class="planet-icon" />
-						<a href="/" on:click|preventDefault={() => (menu = 7)}>uranus</a>
+						<a href="/" on:click|preventDefault={() => toggleMobileNav(7)}>uranus</a>
 					</div>
 					<img src={IconChevron} alt="selector" />
 				</li>
 				<li>
 					<div class="planet-selector">
 						<div class="planet-icon" />
-						<a href="/" on:click|preventDefault={() => (menu = 8)}>Neptune</a>
+						<a href="/" on:click|preventDefault={() => toggleMobileNav(8)}>Neptune</a>
 					</div>
 					<img src={IconChevron} alt="selector" />
 				</li>
