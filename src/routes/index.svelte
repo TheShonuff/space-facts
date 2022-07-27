@@ -12,18 +12,16 @@
 	import MediaQuery from './MediaQuery.svelte';
 
 	import IconChevron from '../assests/icon-chevron.svg';
+	import Layout from './__layout.svelte';
 
-	export let menu = 1;
+	import { menu } from './Stores';
+	import { get } from 'svelte/store';
 
-	export let open = false;
-	export let toggleNav = (): void => {
-		open = !open;
-	};
+	let menuValue: number;
 
-	export function toggleMobileNav(num) {
-		toggleNav();
-		menu = num;
-	}
+	menu.subscribe((value) => {
+		menuValue = value;
+	});
 
 	//screen dectection
 	let innerWidth = 0;
@@ -45,7 +43,8 @@
 <svelte:window bind:innerWidth bind:innerHeight />
 
 <div class="background">
-	<div class="nav-container">
+	<!-- <Layout /> -->
+	<!-- <div class="nav-container">
 		<div class="page-title">
 			<h2>Planet Facts</h2>
 		</div>
@@ -130,27 +129,26 @@
 				</li>
 			</nav>
 		{/if}
-	{/if}
-	{#if menu === 1}
+	{/if} -->
+	{#if menuValue === 1}
 		<Mercury />
-	{:else if menu === 2}
+	{:else if menuValue === 2}
 		<Venus />
-	{:else if menu === 3}
+	{:else if menuValue === 3}
 		<Earth />
-	{:else if menu === 4}
+	{:else if menuValue === 4}
 		<Mars />
-	{:else if menu === 5}
+	{:else if menuValue === 5}
 		<Jupiter />
-	{:else if menu === 6}
+	{:else if menuValue === 6}
 		<Saturn />
-	{:else if menu === 7}
+	{:else if menuValue === 7}
 		<Uranus />
-	{:else if menu === 8}
+	{:else if menuValue === 8}
 		<Neptune />
 	{:else}
 		<h1>Page Not Found</h1>
 	{/if}
-
 	<h2>inner Width: {innerWidth}</h2>
 	<h2>innher height: {innerHeight}</h2>
 </div>
@@ -200,6 +198,8 @@
 	}
 	h1 {
 		color: white;
+		margin: 0;
+		padding: 0;
 	}
 
 	h2 {
