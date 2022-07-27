@@ -1,17 +1,16 @@
 <script lang="ts">
 	import IconChevron from '../assests/icon-chevron.svg';
-	export let menu = 1;
-	export let open = false;
-	export let toggleNav = (): void => {
-		open = !open;
-	};
-	export function toggleMobileNav(num: number) {
-		toggleNav();
-		menu = num;
+	import Hamburger from './Hamburger.svelte';
+	import { menu, open } from './Stores';
+	let menuValue: number;
+
+	function toggleMobileNav(num) {
+		menu.set(num);
 	}
 </script>
 
 <nav class="mobile-nav">
+	<h1>Planet Facts Mobile</h1>
 	<li>
 		<div class="planet-selector">
 			<div class="planet-icon" />

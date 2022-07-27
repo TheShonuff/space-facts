@@ -3,7 +3,7 @@
 </script>
 
 <nav>
-	<div class="background-nav">
+	<div class="desktop-container">
 		<div class="nav-container">
 			<div class="page-title">
 				<h2>Planet Facts</h2>
@@ -26,10 +26,7 @@
 </nav>
 
 <style>
-	.background-nav {
-		background-color: #070724;
-		background-image: url(/src/assests/background-stars.svg);
-		height: 100%;
+	.desktop-container {
 		width: 100%;
 	}
 </style>

@@ -1,14 +1,29 @@
 <script lang="ts">
-	export let open = false;
-	export let toggleNav = (): void => {
-		open = !open;
-	};
+	import { current_component } from 'svelte/internal';
+
+	import { open } from './Stores';
+
+	export let current: boolean;
+
+	open.subscribe((value) => {
+		current = value;
+	});
+
+	// export let toggleNav = (): void => {
+	// 	open.set(!current);
+	// 	console.log(current);
+	// };
+
+	function toggleNav() {
+		open.set(!current);
+		console.log(current);
+	}
 
 	export let ariaLabel = 'toggle menu';
 	export let width: string | number = 80;
 </script>
 
-<button on:click={toggleNav} aria-expanded={open} aria-label={ariaLabel}>
+<button on:click={toggleNav} aria-expanded={$open} aria-label={ariaLabel}>
 	<svg class:open viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="5" {width}>
 		<path
 			class="top"

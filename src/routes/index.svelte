@@ -14,18 +14,25 @@
 	import IconChevron from '../assests/icon-chevron.svg';
 	import Layout from './__layout.svelte';
 
-	import { menu } from './Stores';
+	import { menu, width } from './Stores';
 	import { get } from 'svelte/store';
 
 	let menuValue: number;
+	let innerWidth: number;
+	let innerHeight = 0;
 
 	menu.subscribe((value) => {
 		menuValue = value;
 	});
+	let screenWidth: number;
 
+	width.subscribe((value) => {
+		screenWidth = value;
+	});
 	//screen dectection
-	let innerWidth = 0;
-	let innerHeight = 0;
+	function onChange(value: number) {
+		width.set(value);
+	}
 </script>
 
 <svelte:head>
@@ -40,7 +47,7 @@
 	/>
 </svelte:head>
 
-<svelte:window bind:innerWidth bind:innerHeight />
+<svelte:window bind:innerWidth={$width} bind:innerHeight />
 
 <div class="background">
 	<!-- <Layout /> -->
@@ -149,7 +156,7 @@
 	{:else}
 		<h1>Page Not Found</h1>
 	{/if}
-	<h2>inner Width: {innerWidth}</h2>
+	<h2>inner Width: {screenWidth}</h2>
 	<h2>innher height: {innerHeight}</h2>
 </div>
 
@@ -163,6 +170,9 @@
 
 	html body {
 		margin: 0;
+	}
+	nav {
+		width: 100vw;
 	}
 
 	.nav-container {
@@ -227,6 +237,9 @@
 	}
 
 	@media (max-width: 600px) {
+		#menu {
+			display: none;
+		}
 		.nav-container {
 			flex-direction: row;
 		}
