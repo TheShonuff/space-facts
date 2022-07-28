@@ -3,24 +3,30 @@
 	import DesktopNav from './DesktopNav.svelte';
 	import Hamburger from './Hamburger.svelte';
 	import MobileNav from './MobileNav.svelte';
-	import { menu, width } from './Stores';
+	import { menu, screenwidth, open } from './Stores';
 
 	let menuValue: number;
-	let screenWidth: number;
+	let displayWidth: number;
+	let displayMobileNav: boolean;
 
 	menu.subscribe((value) => {
 		menuValue = value;
 	});
 
-	width.subscribe((value) => {
-		screenWidth = value;
+	screenwidth.subscribe((value) => {
+		displayWidth = value;
+	});
+
+	open.subscribe((value) => {
+		displayMobileNav = value;
 	});
 </script>
 
 <div class="DasNav">
-	<DesktopNav />
-	{#if screenWidth <= 600}
-		<Hamburger />
+	{#if displayWidth > 600}
+		<DesktopNav />
+	{:else}
+		<MobileNav />
 	{/if}
 </div>
 

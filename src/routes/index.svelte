@@ -14,7 +14,7 @@
 	import IconChevron from '../assests/icon-chevron.svg';
 	import Layout from './__layout.svelte';
 
-	import { menu, width } from './Stores';
+	import { menu, screenwidth } from './Stores';
 	import { get } from 'svelte/store';
 
 	let menuValue: number;
@@ -24,14 +24,14 @@
 	menu.subscribe((value) => {
 		menuValue = value;
 	});
-	let screenWidth: number;
+	let displayWidth: number;
 
-	width.subscribe((value) => {
-		screenWidth = value;
+	screenwidth.subscribe((value) => {
+		displayWidth = value;
 	});
 	//screen dectection
 	function onChange(value: number) {
-		width.set(value);
+		screenwidth.set(value);
 	}
 </script>
 
@@ -47,7 +47,7 @@
 	/>
 </svelte:head>
 
-<svelte:window bind:innerWidth={$width} bind:innerHeight />
+<svelte:window bind:innerWidth={$screenwidth} bind:innerHeight />
 
 <div class="background">
 	<!-- <Layout /> -->
@@ -156,7 +156,7 @@
 	{:else}
 		<h1>Page Not Found</h1>
 	{/if}
-	<h2>inner Width: {screenWidth}</h2>
+	<h2>inner Width: {displayWidth}</h2>
 	<h2>innher height: {innerHeight}</h2>
 </div>
 
@@ -181,7 +181,8 @@
 		justify-content: space-between;
 		padding-left: 32px;
 		padding-right: 32px;
-		border-bottom: 1px solid white;
+		border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+		border-width: thin;
 		padding-top: 22px;
 		padding-bottom: 22px;
 	}
@@ -242,6 +243,7 @@
 		}
 		.nav-container {
 			flex-direction: row;
+			justify-content: space-between;
 		}
 
 		.nav-container .page-title {
@@ -250,12 +252,12 @@
 		}
 		.mobile-nav {
 			background-color: #070724;
-			position: absolute;
 			height: 100vh;
-			width: 85%;
+			width: 90%;
 			display: flex;
 			flex-direction: column;
-			padding: 22px 24px 0px 24px;
+			margin: 0 auto;
+			padding-top: 30px;
 		}
 
 		.mobile-nav img {
@@ -281,7 +283,8 @@
 			flex-direction: row;
 			padding-bottom: 22px;
 			padding-top: 22px;
-			border-bottom: 1px solid white;
+			border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+			border-width: thin;
 		}
 		.planet-selector {
 			display: flex;
