@@ -1,5 +1,5 @@
 <script lang="ts">
-	import IconChevron from '../assests/icon-chevron.svg';
+	import IconChevron from '../assets/icon-chevron.svg';
 	import Hamburger from './Hamburger.svelte';
 	import { menu, open } from './Stores';
 

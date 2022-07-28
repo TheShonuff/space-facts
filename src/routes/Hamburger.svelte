@@ -1,6 +1,4 @@
 <script lang="ts">
-	import { current_component } from 'svelte/internal';
-
 	import { open } from './Stores';
 
 	export let current: boolean;
@@ -8,11 +6,6 @@
 	open.subscribe((value) => {
 		current = value;
 	});
-
-	// export let toggleNav = (): void => {
-	// 	open.set(!current);
-	// 	console.log(current);
-	// };
 
 	function toggleNav() {
 		open.set(!current);

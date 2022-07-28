@@ -1,7 +1,7 @@
 <script lang="ts">
-	import Venus from '../assets/planet-venus.svg';
-	import VenusInternal from '../assets/planet-venus-internal.svg';
-	import VenusGeo from '../assets/geology-venus.png';
+	// import Venus from '../assests/planet-venus.svg';
+	// import VenusInternal from '../assests/planet-venus-internal.svg';
+	// import VenusGeo from '../assests/geology-venus.png';
 	import { menu } from './Stores';
 
 	import Data from '../assets/data/data.json';
@@ -19,12 +19,12 @@
 	<div class="main-content">
 		<div class="planet-img">
 			{#if infoDisplay === 1}
-				<img src={Venus} alt="planet" />
+				<img src={`${Data[selection].images.planet}`} alt="planet" />
 			{:else if infoDisplay === 2}
-				<img src={VenusInternal} alt="planet" />
+				<img src={Data[selection].images.internal} alt="planet" />
 			{:else if infoDisplay === 3}
-				<img src={Venus} alt="planet" />
-				<img class="planet-geo-img" src={VenusGeo} alt="planet geology" />
+				<img src={Data[selection].images.planet} alt="planet" />
+				<img class="planet-geo-img" src={Data[selection].images.geology} alt="planet geology" />
 			{/if}
 		</div>
 		<div class="planet-facts-side">
@@ -91,10 +91,15 @@
 	.planet-img {
 		position: relative;
 		display: inline;
-		min-height: 400px;
-		min-width: 400px;
+		height: 400px;
+		width: 400px;
 		padding-left: 100px;
 		padding-top: 50px;
+	}
+
+	.planet-img img {
+		height: 400px;
+		width: 400px;
 	}
 
 	.planet-geo-img {

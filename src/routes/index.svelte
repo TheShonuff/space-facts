@@ -1,24 +1,12 @@
 <script lang="ts">
-	import { prevent_default } from 'svelte/internal';
-	import Earth from './Earth.svelte';
-	import Jupiter from './Jupiter.svelte';
-	import Mars from './Mars.svelte';
-	import Mercury from './Mercury.svelte';
-	import Neptune from './Neptune.svelte';
-	import Saturn from './Saturn.svelte';
-	import Uranus from './Uranus.svelte';
 	import Venus from './Venus.svelte';
-	import Hamburger from './Hamburger.svelte';
-	import MediaQuery from './MediaQuery.svelte';
-
-	import IconChevron from '../assests/icon-chevron.svg';
-	import Layout from './__layout.svelte';
 
 	import { menu, screenwidth } from './Stores';
-	import { get } from 'svelte/store';
+
+	import PlanetDesktop from './PlanetDesktop.svelte';
 
 	let menuValue: number;
-	let innerWidth: number;
+
 	let innerHeight = 0;
 
 	menu.subscribe((value) => {
@@ -50,109 +38,22 @@
 <svelte:window bind:innerWidth={$screenwidth} bind:innerHeight />
 
 <div class="background">
-	<!-- <Layout /> -->
-	<!-- <div class="nav-container">
-		<div class="page-title">
-			<h2>Planet Facts</h2>
-		</div>
-		{#if innerWidth > 600}
-			<ul id="menu">
-				<li>
-					<a href="/" on:click|preventDefault={() => (menu = 1)}>Mercury</a>
-				</li>
-				<li><a href="/" on:click|preventDefault={() => (menu = 2)}>Venus</a></li>
-				<li><a href="/" on:click|preventDefault={() => (menu = 3)}>Earth</a></li>
-				<li><a href="/" on:click|preventDefault={() => (menu = 4)}>Mars</a></li>
-				<li><a href="/" on:click|preventDefault={() => (menu = 5)}>Jupiter</a></li>
-				<li><a href="/" on:click|preventDefault={() => (menu = 6)}>Saturn</a></li>
-				<li><a href="/" on:click|preventDefault={() => (menu = 7)}>Uranus</a></li>
-				<li><a href="/" on:click|preventDefault={() => (menu = 8)}>Neptune</a></li>
-			</ul>
-		{/if}
-
-		{#if innerWidth <= 600}
-			<Hamburger {open} {toggleNav} />
-		{/if}
-	</div>
-
-	{#if innerWidth <= 600}
-		{#if open}
-			<nav class="mobile-nav">
-				<li>
-					<div class="planet-selector">
-						<div class="planet-icon" />
-						<a href="/" on:click|preventDefault={() => toggleMobileNav(1)}>Mercury</a>
-					</div>
-					<img src={IconChevron} alt="selector" />
-				</li>
-				<li>
-					<div class="planet-selector">
-						<div class="planet-icon" />
-						<a href="/" on:click|preventDefault={() => toggleMobileNav(2)}>Venus</a>
-					</div>
-					<img src={IconChevron} alt="selector" />
-				</li>
-				<li>
-					<div class="planet-selector">
-						<div class="planet-icon" />
-						<a href="/" on:click|preventDefault={() => toggleMobileNav(3)}>Earth</a>
-					</div>
-					<img src={IconChevron} alt="selector" />
-				</li>
-				<li>
-					<div class="planet-selector">
-						<div class="planet-icon" />
-						<a href="/" on:click|preventDefault={() => toggleMobileNav(4)}>Mars</a>
-					</div>
-					<img src={IconChevron} alt="selector" />
-				</li>
-				<li>
-					<div class="planet-selector">
-						<div class="planet-icon" />
-						<a href="/" on:click|preventDefault={() => toggleMobileNav(5)}>Jupiter</a>
-					</div>
-					<img src={IconChevron} alt="selector" />
-				</li>
-				<li>
-					<div class="planet-selector">
-						<div class="planet-icon" />
-						<a href="/" on:click|preventDefault={() => toggleMobileNav(6)}>Saturn</a>
-					</div>
-					<img src={IconChevron} alt="selector" />
-				</li>
-				<li>
-					<div class="planet-selector">
-						<div class="planet-icon" />
-						<a href="/" on:click|preventDefault={() => toggleMobileNav(7)}>uranus</a>
-					</div>
-					<img src={IconChevron} alt="selector" />
-				</li>
-				<li>
-					<div class="planet-selector">
-						<div class="planet-icon" />
-						<a href="/" on:click|preventDefault={() => toggleMobileNav(8)}>Neptune</a>
-					</div>
-					<img src={IconChevron} alt="selector" />
-				</li>
-			</nav>
-		{/if}
-	{/if} -->
 	{#if menuValue === 1}
-		<Mercury />
+		<PlanetDesktop />
 	{:else if menuValue === 2}
 		<Venus />
 	{:else if menuValue === 3}
-		<Earth />
+		<PlanetDesktop />
 	{:else if menuValue === 4}
-		<Mars />
+		<PlanetDesktop />
 	{:else if menuValue === 5}
-		<Jupiter />
+		<PlanetDesktop />
 	{:else if menuValue === 6}
-		<Saturn />
+		<PlanetDesktop />
 	{:else if menuValue === 7}
-		<Uranus />
+		<PlanetDesktop />
 	{:else if menuValue === 8}
-		<Neptune />
+		<PlanetDesktop />
 	{:else}
 		<h1>Page Not Found</h1>
 	{/if}
