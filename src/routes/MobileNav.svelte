@@ -18,7 +18,7 @@
 
 <nav>
 	<div class="nav-container">
-		<h2>PLANET FACTS</h2>
+		<h2>THE PLANETS</h2>
 		<Hamburger />
 	</div>
 	{#if $open}

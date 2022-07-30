@@ -28,28 +28,32 @@
 			{/if}
 		</div>
 		<div class="planet-facts-side">
-			<h1>{Data[selection].name}</h1>
-			{#if infoDisplay === 1}
-				<p>{Data[selection].overview.content}</p>
-				<p>Source</p>
-			{:else if infoDisplay === 2}
-				<p>{Data[selection].structure.content}</p>
-				<p>Source</p>
-			{:else if infoDisplay === 3}
-				<p>{Data[selection].geology.content}</p>
-				<p>Source</p>
-			{/if}
-			<div class={infoDisplay === 1 ? 'btn-selected' : 'btn'} on:click={() => (infoDisplay = 1)}>
-				<p>01</p>
-				<p>OVERVIEW</p>
+			<div class="planet-facts-information">
+				<h1>{Data[selection].name}</h1>
+				{#if infoDisplay === 1}
+					<p>{Data[selection].overview.content}</p>
+					<p>Source</p>
+				{:else if infoDisplay === 2}
+					<p>{Data[selection].structure.content}</p>
+					<p>Source</p>
+				{:else if infoDisplay === 3}
+					<p>{Data[selection].geology.content}</p>
+					<p>Source</p>
+				{/if}
 			</div>
-			<div class={infoDisplay === 2 ? 'btn-selected' : 'btn'} on:click={() => (infoDisplay = 2)}>
-				<p>02</p>
-				<p>INTERNAL STRUCTURE</p>
-			</div>
-			<div class={infoDisplay === 3 ? 'btn-selected' : 'btn'} on:click={() => (infoDisplay = 3)}>
-				<p>03</p>
-				<p>SURFACE GEOLOGY</p>
+			<div class="planet-facts-selector">
+				<div class={infoDisplay === 1 ? 'btn-selected' : 'btn'} on:click={() => (infoDisplay = 1)}>
+					<p>01</p>
+					<p>OVERVIEW</p>
+				</div>
+				<div class={infoDisplay === 2 ? 'btn-selected' : 'btn'} on:click={() => (infoDisplay = 2)}>
+					<p>02</p>
+					<p>INTERNAL STRUCTURE</p>
+				</div>
+				<div class={infoDisplay === 3 ? 'btn-selected' : 'btn'} on:click={() => (infoDisplay = 3)}>
+					<p>03</p>
+					<p>SURFACE GEOLOGY</p>
+				</div>
 			</div>
 		</div>
 	</div>
@@ -147,7 +151,7 @@
 	.btn-selected p {
 		padding-left: 28px;
 		font-family: 'League Spartan', sans-serif;
-		font-size: 12px;
+		font-size: 9px;
 		line-height: 25px;
 		font-style: normal;
 	}
@@ -238,5 +242,101 @@
 
 	.box:last-child {
 		margin-right: 0;
+	}
+
+	@media (max-width: 820px) {
+		.container {
+			padding: 0;
+		}
+		.main-content {
+			flex-direction: column;
+		}
+
+		.planet-facts-side {
+			flex-direction: row;
+			width: 100vw;
+			align-items: center;
+			justify-content: space-between;
+			margin: 0;
+			padding: 0;
+		}
+
+		.planet-facts-side h1 {
+			font-size: 48px;
+			line-height: 62px;
+			text-transform: uppercase;
+		}
+		.planet-img {
+			display: block;
+			margin: 0 auto;
+		}
+
+		.planet-img img {
+			height: 370px;
+			width: 370px;
+		}
+		.planet-facts-selector {
+			margin-right: 20px;
+		}
+
+		.planet-facts-information {
+			margin-right: 60px;
+			margin-left: 30px;
+		}
+
+		.planet-facts-information p {
+			font-size: 12px;
+			line-height: 22px;
+		}
+		.btn {
+			width: 281px;
+			height: 40px;
+		}
+
+		.btn p {
+			padding-left: 28px;
+			font-family: 'League Spartan', sans-serif;
+			font-size: 9px;
+			line-height: 25px;
+			letter-spacing: 2px;
+			font-style: normal;
+		}
+
+		.btn-selected {
+			width: 281px;
+			height: 40px;
+			display: flex;
+			flex-direction: row;
+			background-color: #d83a34;
+			border: rgba(216, 58, 52, 1);
+			border-width: thin;
+			margin-bottom: 16px;
+			border-style: solid;
+			cursor: pointer;
+		}
+
+		.btn-selected p {
+			font-size: 9px;
+			line-height: 25px;
+			letter-spacing: 2px;
+		}
+		.box {
+			flex-direction: column;
+			align-items: left;
+			margin-top: 20px;
+			width: 164px;
+			height: 88px;
+		}
+
+		.box h2 {
+			font-size: 24px;
+			margin-bottom: 40px;
+		}
+
+		.box h5 {
+			font-size: 11px;
+			margin-bottom: 0;
+			margin-top: 10px;
+		}
 	}
 </style>

@@ -39,7 +39,7 @@
 		flex-direction: row;
 		background-color: #070724;
 		justify-content: space-between;
-		background-image: url(/src/assests/background-stars.svg);
+		background-image: url(/src/assets/background-stars.svg);
 		margin: 0;
 	}
 </style>

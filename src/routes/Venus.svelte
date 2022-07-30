@@ -190,8 +190,10 @@
 	}
 
 	.planet-stats-bottom {
+		width: 100vw;
 		display: flex;
 		justify-content: space-between;
+		margin: 0 auto;
 	}
 	.box {
 		display: flex;

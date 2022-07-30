@@ -4,6 +4,8 @@
 	import { menu, screenwidth } from './Stores';
 
 	import PlanetDesktop from './PlanetDesktop.svelte';
+	import PlanetMobile from './PlanetMobile.svelte';
+	import MobileNav from './MobileNav.svelte';
 
 	let menuValue: number;
 
@@ -38,7 +40,7 @@
 <svelte:window bind:innerWidth={$screenwidth} bind:innerHeight />
 
 <div class="background">
-	{#if menuValue === 1}
+	<!-- {#if menuValue === 1}
 		<PlanetDesktop />
 	{:else if menuValue === 2}
 		<Venus />
@@ -56,6 +58,11 @@
 		<PlanetDesktop />
 	{:else}
 		<h1>Page Not Found</h1>
+	{/if} -->
+	{#if $screenwidth > 600}
+		<PlanetDesktop />
+	{:else}
+		<PlanetMobile />
 	{/if}
 	<h2>inner Width: {displayWidth}</h2>
 	<h2>innher height: {innerHeight}</h2>
@@ -64,7 +71,7 @@
 <style global>
 	.background {
 		background-color: #070724;
-		background-image: url(/src/assests/background-stars.svg);
+		background-image: url(/src/assets/background-stars.svg);
 		height: 100vh;
 		width: 100vw;
 	}
@@ -120,6 +127,10 @@
 		font-family: 'Antonio', sans-serif;
 	}
 
+	h5 {
+		margin: 0;
+	}
+
 	@media (max-width: 820px) {
 		.nav-container {
 			flex-direction: column;
@@ -145,6 +156,8 @@
 		.nav-container {
 			flex-direction: row;
 			justify-content: space-between;
+			margin-bottom: 0;
+			padding-bottom: 10px;
 		}
 
 		.nav-container .page-title {
@@ -182,7 +195,7 @@
 			align-items: center;
 			justify-content: space-between;
 			flex-direction: row;
-			padding-bottom: 22px;
+			padding-bottom: 10px;
 			padding-top: 22px;
 			border-bottom: 1px solid rgba(255, 255, 255, 0.5);
 			border-width: thin;
