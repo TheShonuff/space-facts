@@ -1,11 +1,13 @@
 <script lang="ts">
 	import Venus from './Venus.svelte';
+	import { fade } from 'svelte/transition';
 
 	import { menu, screenwidth } from './Stores';
 
 	import PlanetDesktop from './PlanetDesktop.svelte';
 	import PlanetMobile from './PlanetMobile.svelte';
 	import MobileNav from './MobileNav.svelte';
+	import { transition_in } from 'svelte/internal';
 
 	let menuValue: number;
 
@@ -59,13 +61,15 @@
 	{:else}
 		<h1>Page Not Found</h1>
 	{/if} -->
-	{#if $screenwidth > 600}
-		<PlanetDesktop />
-	{:else}
-		<PlanetMobile />
-	{/if}
-	<h2>inner Width: {displayWidth}</h2>
-	<h2>innher height: {innerHeight}</h2>
+	<div transition:fade>
+		{#if $screenwidth > 600}
+			<PlanetDesktop />
+		{:else}
+			<PlanetMobile />
+		{/if}
+		<h2>inner Width: {displayWidth}</h2>
+		<h2>innher height: {innerHeight}</h2>
+	</div>
 </div>
 
 <style global>

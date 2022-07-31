@@ -3,6 +3,7 @@
 	// import VenusInternal from '../assests/planet-venus-internal.svg';
 	// import VenusGeo from '../assests/geology-venus.png';
 	import { menu } from './Stores';
+	import { fade } from 'svelte/transition';
 
 	import Data from '../assets/data/data.json';
 	let infoDisplay = 1;
@@ -30,16 +31,30 @@
 		<div class="planet-facts-side">
 			<div class="planet-facts-information">
 				<h1>{Data[selection].name}</h1>
-				{#if infoDisplay === 1}
-					<p>{Data[selection].overview.content}</p>
-					<p>Source</p>
-				{:else if infoDisplay === 2}
-					<p>{Data[selection].structure.content}</p>
-					<p>Source</p>
-				{:else if infoDisplay === 3}
-					<p>{Data[selection].geology.content}</p>
-					<p>Source</p>
-				{/if}
+				<div class="planet-facts-body">
+					{#if infoDisplay === 1}
+						<p>{Data[selection].overview.content}</p>
+						<div class="source">
+							<p>Source :</p>
+							<a href={Data[selection].overview.source}>Wikipedia</a>
+							<img src="./assets/icon-source.svg" alt="link image" />
+						</div>
+					{:else if infoDisplay === 2}
+						<p>{Data[selection].structure.content}</p>
+						<div class="source">
+							<p>Source :</p>
+							<a href={Data[selection].overview.source}>Wikipedia</a>
+							<img src="./assets/icon-source.svg" alt="link image" />
+						</div>
+					{:else if infoDisplay === 3}
+						<p>{Data[selection].geology.content}</p>
+						<div class="source">
+							<p>Source :</p>
+							<a href={Data[selection].overview.source}>Wikipedia</a>
+							<img src="./assets/icon-source.svg" alt="link image" />
+						</div>
+					{/if}
+				</div>
 			</div>
 			<div class="planet-facts-selector">
 				<div class={infoDisplay === 1 ? 'btn-selected' : 'btn'} on:click={() => (infoDisplay = 1)}>
@@ -57,6 +72,7 @@
 			</div>
 		</div>
 	</div>
+
 	<div class="planet-stats-bottom">
 		<div class="rotational box">
 			<h5>ROTATION TIME</h5>
@@ -102,15 +118,16 @@
 	}
 
 	.planet-img img {
+		position: relative;
 		height: 400px;
 		width: 400px;
 	}
 
-	.planet-geo-img {
+	.planet-img .planet-geo-img {
 		position: absolute;
 		height: 199px;
 		width: 163px;
-		bottom: 0;
+		bottom: -70px;
 		left: 220px;
 	}
 
@@ -119,6 +136,29 @@
 		flex-direction: column;
 		width: 350px;
 		padding-left: 100px;
+	}
+
+	.source {
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		font-family: 'League Spartan', sans-serif;
+		font-size: 14px;
+		line-height: 25px;
+		font-style: normal;
+	}
+	.source p {
+		opacity: 0.5;
+	}
+	.source a {
+		text-transform: none;
+		text-decoration: underline;
+		opacity: 0.5;
+		padding-left: 4px;
+	}
+
+	.source img {
+		padding-left: 4px;
 	}
 
 	.btn {
@@ -185,6 +225,15 @@
 		font-size: 15px;
 		color: white;
 		line-height: 25px;
+	}
+
+	.planet-facts-body {
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+		height: 250px;
+		width: 350px;
+		top: 0;
 	}
 
 	.planet-facts-side p:first-child {
@@ -291,6 +340,10 @@
 		.btn {
 			width: 281px;
 			height: 40px;
+		}
+		.planet-img .planet-geo-img {
+			left: 205px;
+			bottom: -25px;
 		}
 
 		.btn p {
