@@ -61,7 +61,6 @@
 	{:else}
 		<h1>Page Not Found</h1>
 	{/if} -->
-	<div transition:fade>
 		{#if $screenwidth > 600}
 			<PlanetDesktop />
 		{:else}
@@ -69,7 +68,7 @@
 		{/if}
 		<h2>inner Width: {displayWidth}</h2>
 		<h2>innher height: {innerHeight}</h2>
-	</div>
+
 </div>
 
 <style global>

@@ -1,9 +1,5 @@
 <script lang="ts">
-	// import Venus from '../assests/planet-venus.svg';
-	// import VenusInternal from '../assests/planet-venus-internal.svg';
-	// import VenusGeo from '../assests/geology-venus.png';
-	import { menu } from './Stores';
-	import { fade } from 'svelte/transition';
+	import { menu, screenwidth } from './Stores';
 
 	import Data from '../assets/data/data.json';
 	let infoDisplay = 1;
@@ -14,6 +10,17 @@
 	});
 
 	console.log(Data[1]);
+
+	const colors = [
+		'#419EBB',
+		'#EDA249',
+		'#6D2ED5',
+		'#D14C32',
+		'#D83A34',
+		'#CD5120',
+		'#1EC1A2',
+		'#2D68F0'
+	];
 </script>
 
 <div class="container">
@@ -56,7 +63,7 @@
 					{/if}
 				</div>
 			</div>
-			<div class="planet-facts-selector">
+			<div class="planet-facts-selector" style="--selector-color:{colors[selection]}">
 				<div class={infoDisplay === 1 ? 'btn-selected' : 'btn'} on:click={() => (infoDisplay = 1)}>
 					<p>01</p>
 					<p>OVERVIEW</p>
@@ -76,19 +83,19 @@
 	<div class="planet-stats-bottom">
 		<div class="rotational box">
 			<h5>ROTATION TIME</h5>
-			<h2>{Data[1].rotation}</h2>
+			<h2>{Data[selection].rotation}</h2>
 		</div>
 		<div class="revolution box">
 			<h5>REVOLUTION TIME</h5>
-			<h2>{Data[1].revolution}</h2>
+			<h2>{Data[selection].revolution}</h2>
 		</div>
 		<div class="radius box">
 			<h5>RADIUS</h5>
-			<h2>{Data[1].radius}</h2>
+			<h2>{Data[selection].radius}</h2>
 		</div>
 		<div class="average-temp box">
-			<h5>AVERAGE TEMPERATURE</h5>
-			<h2>{Data[1].temperature}</h2>
+			<h5>{$screenwidth > 900 ? 'AVERAGE TEMPERATURE' : 'AVERAGE TEMP'}</h5>
+			<h2>{Data[selection].temperature}</h2>
 		</div>
 	</div>
 </div>
@@ -99,6 +106,8 @@
 		padding-left: 165px;
 		padding-right: 165px;
 		padding-top: 100px;
+		max-width: 1200px;
+		min-width: 960px;
 	}
 	.main-content {
 		display: flex;
@@ -180,8 +189,8 @@
 		flex-direction: row;
 		height: 48px;
 		width: 350px;
-		background-color: #eda249;
-		border: rgba(237, 162, 73, 1);
+		background-color: var(--selector-color);
+		border: var(--selector-color);
 		border-width: thin;
 		margin-bottom: 16px;
 		border-style: solid;
@@ -250,6 +259,8 @@
 	.planet-stats-bottom {
 		display: flex;
 		justify-content: space-between;
+		max-width: 1200px;
+		min-width: 950px;
 	}
 	.box {
 		display: flex;
@@ -293,20 +304,23 @@
 		margin-right: 0;
 	}
 
-	@media (max-width: 820px) {
+	@media (max-width: 900px) {
 		.container {
 			padding: 0;
+			max-width: 900px;
+			min-width: 601px;
 		}
 		.main-content {
 			flex-direction: column;
+			width: 95%;
 		}
 
 		.planet-facts-side {
 			flex-direction: row;
-			width: 100vw;
+			width: 95%;
 			align-items: center;
 			justify-content: space-between;
-			margin: 0;
+			margin: 0 auto;
 			padding: 0;
 		}
 
@@ -318,6 +332,7 @@
 		.planet-img {
 			display: block;
 			margin: 0 auto;
+			padding-bottom: 50px;
 		}
 
 		.planet-img img {
@@ -336,6 +351,10 @@
 		.planet-facts-information p {
 			font-size: 12px;
 			line-height: 22px;
+		}
+
+		.planet-facts-body {
+			height: 200px;
 		}
 		.btn {
 			width: 281px;
@@ -360,8 +379,6 @@
 			height: 40px;
 			display: flex;
 			flex-direction: row;
-			background-color: #d83a34;
-			border: rgba(216, 58, 52, 1);
 			border-width: thin;
 			margin-bottom: 16px;
 			border-style: solid;
@@ -390,6 +407,14 @@
 			font-size: 11px;
 			margin-bottom: 0;
 			margin-top: 10px;
+		}
+
+		.planet-stats-bottom {
+			width: 90%;
+			max-width: 900px;
+			min-width: 601px;
+			margin: 0 auto;
+			justify-content: space-between;
 		}
 	}
 </style>
