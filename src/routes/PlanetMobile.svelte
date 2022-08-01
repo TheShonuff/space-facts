@@ -12,12 +12,23 @@
 		selection = value - 1;
 	});
 
+	const colors = [
+		'#419EBB',
+		'#EDA249',
+		'#6D2ED5',
+		'#D14C32',
+		'#D83A34',
+		'#CD5120',
+		'#1EC1A2',
+		'#2D68F0'
+	];
+
 	console.log(Data[1]);
 </script>
 
 <div class="container">
 	<div class="main-content">
-		<div class="mobile-info-selection">
+		<div class="mobile-info-selection" style="--selector-color:{colors[selection]}">
 			<div class={infoDisplay === 1 ? 'btn-selected' : 'btn'} on:click={() => (infoDisplay = 1)}>
 				<p>OVERVIEW</p>
 			</div>
@@ -56,19 +67,19 @@
 	<div class="planet-stats-bottom">
 		<div class="rotational box">
 			<h5>ROTATION TIME</h5>
-			<h2>{Data[1].rotation}</h2>
+			<h2>{Data[selection].rotation}</h2>
 		</div>
 		<div class="revolution box">
 			<h5>REVOLUTION TIME</h5>
-			<h2>{Data[1].revolution}</h2>
+			<h2>{Data[selection].revolution}</h2>
 		</div>
 		<div class="radius box">
 			<h5>RADIUS</h5>
-			<h2>{Data[1].radius}</h2>
+			<h2>{Data[selection].radius}</h2>
 		</div>
 		<div class="average-temp box">
 			<h5>AVERAGE TEMPERATURE</h5>
-			<h2>{Data[1].temperature}</h2>
+			<h2>{Data[selection].temperature}</h2>
 		</div>
 	</div>
 </div>
@@ -141,7 +152,7 @@
 	.btn-selected {
 		display: flex;
 		flex-direction: row;
-		border-bottom: 3px solid #2d68f0;
+		border-bottom: 4px solid var(--selector-color);
 
 		cursor: pointer;
 	}
