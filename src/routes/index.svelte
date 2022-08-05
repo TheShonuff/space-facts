@@ -61,14 +61,13 @@
 	{:else}
 		<h1>Page Not Found</h1>
 	{/if} -->
-		{#if $screenwidth > 600}
-			<PlanetDesktop />
-		{:else}
-			<PlanetMobile />
-		{/if}
-		<h2>inner Width: {displayWidth}</h2>
-		<h2>innher height: {innerHeight}</h2>
-
+	{#if $screenwidth > 600}
+		<PlanetDesktop />
+	{:else}
+		<PlanetMobile />
+	{/if}
+	<h2>inner Width: {displayWidth}</h2>
+	<h2>innher height: {innerHeight}</h2>
 </div>
 
 <style global>
@@ -134,7 +133,7 @@
 		margin: 0;
 	}
 
-	@media (max-width: 820px) {
+	@media (max-width: 900px) {
 		.nav-container {
 			flex-direction: column;
 			margin: 0 auto;
@@ -213,7 +212,7 @@
 			height: 20px;
 			width: 20px;
 			border-radius: 10px;
-			background-color: white;
+			background-color: var(--icon-color);
 		}
 	}
 </style>

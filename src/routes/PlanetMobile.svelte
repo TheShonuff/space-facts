@@ -54,13 +54,25 @@
 			<h1>{Data[selection].name}</h1>
 			{#if infoDisplay === 1}
 				<p>{Data[selection].overview.content}</p>
-				<p>Source</p>
+				<div class="source">
+					<p>Source :</p>
+					<a href={Data[selection].overview.source}>Wikipedia</a>
+					<img src="./assets/icon-source.svg" alt="link image" />
+				</div>
 			{:else if infoDisplay === 2}
 				<p>{Data[selection].structure.content}</p>
-				<p>Source</p>
+				<div class="source">
+					<p>Source :</p>
+					<a href={Data[selection].overview.source}>Wikipedia</a>
+					<img src="./assets/icon-source.svg" alt="link image" />
+				</div>
 			{:else if infoDisplay === 3}
 				<p>{Data[selection].geology.content}</p>
-				<p>Source</p>
+				<div class="source">
+					<p>Source :</p>
+					<a href={Data[selection].overview.source}>Wikipedia</a>
+					<img src="./assets/icon-source.svg" alt="link image" />
+				</div>
 			{/if}
 		</div>
 	</div>
@@ -165,6 +177,7 @@
 		flex-direction: column;
 		width: 80%;
 		margin: 0 auto;
+		flex-wrap: wrap;
 	}
 
 	.planet-information h1 {
@@ -182,6 +195,7 @@
 		font-size: 11px;
 		color: white;
 		line-height: 22px;
+		word-wrap: break-word;
 	}
 
 	.planet-geo-img {
@@ -227,5 +241,30 @@
 		letter-spacing: -1.5px;
 		padding-right: 20px;
 		margin: 0;
+	}
+
+	.source {
+		display: flex;
+		flex-direction: row;
+		align-items: baseline;
+		font-family: 'League Spartan', sans-serif;
+		font-size: 14px;
+		line-height: 25px;
+		font-style: normal;
+		margin: 0 auto;
+	}
+	.source p {
+		opacity: 0.5;
+	}
+	.source a {
+		text-transform: none;
+		text-decoration: underline;
+		opacity: 0.5;
+		padding-left: 4px;
+	}
+
+	.source img {
+		padding-left: 4px;
+		align-self: center;
 	}
 </style>
