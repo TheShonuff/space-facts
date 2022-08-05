@@ -1,10 +1,9 @@
 <script lang="ts">
-	import { subscribe } from 'svelte/internal';
 	import DesktopNav from './DesktopNav.svelte';
-	import Hamburger from './Hamburger.svelte';
+
 	import MobileNav from './MobileNav.svelte';
 	import { menu, screenwidth, open } from './Stores';
-	import { fade } from 'svelte/transition';
+
 	let menuValue: number;
 	let displayWidth: number;
 	let displayMobileNav: boolean;

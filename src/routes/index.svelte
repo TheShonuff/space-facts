@@ -1,13 +1,8 @@
 <script lang="ts">
-	import Venus from './Venus.svelte';
-	import { fade } from 'svelte/transition';
-
 	import { menu, screenwidth } from './Stores';
 
 	import PlanetDesktop from './PlanetDesktop.svelte';
 	import PlanetMobile from './PlanetMobile.svelte';
-	import MobileNav from './MobileNav.svelte';
-	import { transition_in } from 'svelte/internal';
 
 	let menuValue: number;
 
@@ -75,14 +70,14 @@
 		background-color: #070724;
 		background-image: url(/src/assets/background-stars.svg);
 		height: 100vh;
-		width: 100vw;
+		width: 100%;
 	}
 
 	html body {
 		margin: 0;
 	}
 	nav {
-		width: 100vw;
+		width: 100%;
 	}
 
 	.nav-container {

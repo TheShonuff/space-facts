@@ -1,7 +1,4 @@
 <script lang="ts">
-	// import Venus from '../assests/planet-venus.svg';
-	// import VenusInternal from '../assests/planet-venus-internal.svg';
-	// import VenusGeo from '../assests/geology-venus.png';
 	import { menu } from './Stores';
 
 	import Data from '../assets/data/data.json';
@@ -57,21 +54,21 @@
 				<div class="source">
 					<p>Source :</p>
 					<a href={Data[selection].overview.source}>Wikipedia</a>
-					<img src="./assets/icon-source.svg" alt="link image" />
+					<img src="./assets/icon-source.svg" alt="overview source link icon" />
 				</div>
 			{:else if infoDisplay === 2}
 				<p>{Data[selection].structure.content}</p>
 				<div class="source">
 					<p>Source :</p>
 					<a href={Data[selection].overview.source}>Wikipedia</a>
-					<img src="./assets/icon-source.svg" alt="link image" />
+					<img src="./assets/icon-source.svg" alt="planet structure source link icon" />
 				</div>
 			{:else if infoDisplay === 3}
 				<p>{Data[selection].geology.content}</p>
 				<div class="source">
 					<p>Source :</p>
 					<a href={Data[selection].overview.source}>Wikipedia</a>
-					<img src="./assets/icon-source.svg" alt="link image" />
+					<img src="./assets/icon-source.svg" alt="planet structure source link icon" />
 				</div>
 			{/if}
 		</div>
@@ -96,175 +93,4 @@
 	</div>
 </div>
 
-<style>
-	.container {
-		margin: 0 auto;
-		width: 100vw;
-	}
-	.main-content {
-		display: flex;
-		flex-direction: column;
-	}
-	.planet-img {
-		display: flex;
-		justify-content: center;
-		width: 100vw;
-		margin: 0 auto;
-		padding-top: 40px;
-		padding-bottom: 40px;
-	}
-	.planet-img img {
-		height: 176px;
-		width: 176px;
-		margin: 0 auto;
-	}
-
-	.mobile-info-selection {
-		display: flex;
-		flex-direction: row;
-		justify-content: space-evenly;
-		width: 100%;
-		margin-right: 10px;
-		padding-top: 10px;
-		border-bottom: thin solid rgba(255, 255, 255, 0.5);
-	}
-
-	.btn {
-		display: flex;
-		flex-direction: row;
-		background-color: transparent;
-		cursor: pointer;
-		color: white;
-		letter-spacing: 2px;
-		padding-bottom: 10px;
-		border: rgba(255, 255, 255, 0.5);
-	}
-	.btn p {
-		padding-left: 9px;
-		font-family: 'League Spartan', sans-serif;
-		font-size: 9px;
-		line-height: 10px;
-		font-weight: 700;
-		font-style: normal;
-		opacity: 0.5;
-	}
-
-	.btn-selected p {
-		padding-left: 9px;
-		font-family: 'League Spartan', sans-serif;
-		font-size: 9px;
-		line-height: 10px;
-		font-weight: 700;
-		font-style: normal;
-		letter-spacing: 2px;
-		color: white;
-		opacity: 0.8;
-	}
-
-	.btn-selected {
-		display: flex;
-		flex-direction: row;
-		border-bottom: 4px solid var(--selector-color);
-
-		cursor: pointer;
-	}
-
-	.planet-information {
-		margin-left: 10px;
-		margin-right: 20px;
-		justify-content: center;
-		display: flex;
-		flex-direction: column;
-		width: 80%;
-		margin: 0 auto;
-		flex-wrap: wrap;
-	}
-
-	.planet-information h1 {
-		font-family: 'Antonio', sans-serif;
-		font-weight: 400;
-		font-size: 40px;
-		text-align: center;
-	}
-
-	.planet-information p {
-		text-align: center;
-		font-family: 'League Spartan', sans-serif;
-		font-style: normal;
-		font-weight: 400;
-		font-size: 11px;
-		color: white;
-		line-height: 22px;
-		word-wrap: break-word;
-	}
-
-	.planet-geo-img {
-		display: absolute;
-		left: 0;
-	}
-
-	.planet-stats-bottom {
-		width: 327px;
-		margin: 0 auto;
-	}
-
-	.box {
-		display: flex;
-		flex-direction: row;
-		justify-content: space-between;
-		align-items: center;
-		height: 48px;
-		width: 327px;
-		margin-top: 5px;
-
-		border: rgba(255, 255, 255, 0.5);
-		border-width: thin;
-		margin-bottom: 16px;
-		border-style: solid;
-		font-family: 'League Spartan', sans-serif;
-		font-style: normal;
-		color: white;
-	}
-
-	.box h5 {
-		opacity: 0.5;
-		font-size: 8px;
-		line-height: 25px;
-		padding: 0;
-		padding-left: 23px;
-		color: white;
-	}
-
-	.box h2 {
-		font-size: 20px;
-		line-height: 26px;
-		letter-spacing: -1.5px;
-		padding-right: 20px;
-		margin: 0;
-	}
-
-	.source {
-		display: flex;
-		flex-direction: row;
-		align-items: baseline;
-		font-family: 'League Spartan', sans-serif;
-		font-size: 14px;
-		line-height: 25px;
-		font-style: normal;
-		margin: 0 auto;
-	}
-	.source p {
-		opacity: 0.5;
-	}
-	.source a {
-		text-transform: none;
-		text-decoration: underline;
-		opacity: 0.5;
-		padding-left: 4px;
-	}
-
-	.source img {
-		padding-left: 4px;
-		align-self: center;
-	}
-</style>
+<style src="../styles/planet-mobile.css"></style>
