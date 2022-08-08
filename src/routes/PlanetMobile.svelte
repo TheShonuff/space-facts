@@ -23,6 +23,10 @@
 	console.log('Mobile Loaded');
 </script>
 
+<svelte:head>
+	<title>{Data[selection].name}</title>
+</svelte:head>
+
 <div class="container">
 	<div class="main-content">
 		<div class="mobile-info-selection" style="--selector-color:{colors[selection]}">

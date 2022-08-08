@@ -56,7 +56,9 @@
 		height: 100%;
 		width: 100%;
 	}
-
+	body {
+		background-color: #070724;
+	}
 	html body {
 		margin: 0;
 	}
