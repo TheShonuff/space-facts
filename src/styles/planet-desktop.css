@@ -1,13 +1,12 @@
 .container {
 	margin: 0 auto;
-
-	padding-top: 100px;
+	padding-top: 50px;
 	max-width: 1200px;
 	min-width: 960px;
 }
 .main-content {
 	display: flex;
-	justify-content: space-between;
+	justify-content: space-evenly;
 	flex-direction: row;
 	width: 100%;
 	margin: 0 auto;
@@ -15,17 +14,19 @@
 
 .planet-img {
 	position: relative;
-	display: inline;
-	height: 400px;
-	width: 400px;
+	display: inline-block;
+	height: 700px;
+	width: 700px;
 	padding-left: 100px;
-	padding-top: 50px;
 }
 
 .planet-img img {
-	position: relative;
-	height: 400px;
-	width: 400px;
+	position: absolute;
+	height: var(--planet-size);
+	width: var(--planet-size);
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%);
 }
 
 .planet-img .planet-geo-img {
@@ -232,8 +233,10 @@
 	}
 
 	.planet-img img {
-		height: 370px;
-		width: 370px;
+		/* height: 370px;
+		width: 370px; */
+		height: var(--planet-size);
+		width: var(--planet-size);
 	}
 	.planet-facts-selector {
 		margin-right: 20px;
