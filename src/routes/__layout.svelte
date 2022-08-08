@@ -22,7 +22,7 @@
 </script>
 
 <div class="DasNav">
-	{#if displayWidth > 600}
+	{#if displayWidth > 600 || displayWidth == 0}
 		<DesktopNav />
 	{:else}
 		<MobileNav />

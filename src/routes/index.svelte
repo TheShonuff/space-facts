@@ -3,6 +3,7 @@
 
 	import PlanetDesktop from './PlanetDesktop.svelte';
 	import PlanetMobile from './PlanetMobile.svelte';
+	import { onMount } from 'svelte';
 
 	let menuValue: number;
 
@@ -28,6 +29,8 @@
 		rel="stylesheet"
 	/>
 
+	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
 	<link
 		href="https://fonts.googleapis.com/css2?family=Antonio:wght@100;200;300;400;500;600;700&display=swap"
 		rel="stylesheet"
@@ -37,26 +40,7 @@
 <svelte:window bind:innerWidth={$screenwidth} bind:innerHeight />
 
 <div class="background">
-	<!-- {#if menuValue === 1}
-		<PlanetDesktop />
-	{:else if menuValue === 2}
-		<Venus />
-	{:else if menuValue === 3}
-		<PlanetDesktop />
-	{:else if menuValue === 4}
-		<PlanetDesktop />
-	{:else if menuValue === 5}
-		<PlanetDesktop />
-	{:else if menuValue === 6}
-		<PlanetDesktop />
-	{:else if menuValue === 7}
-		<PlanetDesktop />
-	{:else if menuValue === 8}
-		<PlanetDesktop />
-	{:else}
-		<h1>Page Not Found</h1>
-	{/if} -->
-	{#if $screenwidth > 600}
+	{#if $screenwidth > 600 || $screenwidth == 0}
 		<PlanetDesktop />
 	{:else}
 		<PlanetMobile />
@@ -69,7 +53,7 @@
 	.background {
 		background-color: #070724;
 		background-image: url(/src/assets/background-stars.svg);
-		height: 100vh;
+		height: 100%;
 		width: 100%;
 	}
 

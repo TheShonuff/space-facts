@@ -21,7 +21,12 @@
 		'#1EC1A2',
 		'#2D68F0'
 	];
+	console.log('Desktop Loaded');
 </script>
+
+<svelte:head>
+	<title>{Data[selection].name}</title>
+</svelte:head>
 
 <div class="container">
 	<div class="main-content">

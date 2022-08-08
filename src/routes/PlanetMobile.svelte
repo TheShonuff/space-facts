@@ -20,7 +20,7 @@
 		'#2D68F0'
 	];
 
-	console.log(Data[1]);
+	console.log('Mobile Loaded');
 </script>
 
 <div class="container">
