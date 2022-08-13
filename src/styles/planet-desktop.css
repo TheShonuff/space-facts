@@ -236,12 +236,8 @@
 	.planet-img {
 		height: 550px;
 	}
-	/* .planet-img img {
-		height: var(--planet-size);
-		width: auto;
-	} */
-
-	.the-planet {
+	.planet-img .planet-geo-img {
+		top: 450px;
 	}
 
 	.planet-facts-selector {
@@ -264,10 +260,6 @@
 	.btn {
 		width: 281px;
 		height: 40px;
-	}
-	.planet-img .planet-geo-img {
-		left: 205px;
-		bottom: -25px;
 	}
 
 	.btn p {

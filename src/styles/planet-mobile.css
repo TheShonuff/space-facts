@@ -1,6 +1,6 @@
 .container {
 	margin: 0 auto;
-	width: 100vw;
+	width: 100%;
 	height: 100%;
 }
 .main-content {
@@ -8,17 +8,32 @@
 	flex-direction: column;
 }
 .planet-img {
-	display: flex;
-	justify-content: center;
-	width: 100vw;
+	position: relative;
+	display: inline-block;
+	width: auto;
+	height: 270px;
 	margin: 0 auto;
-	padding-top: 40px;
-	padding-bottom: 40px;
 }
+
 .planet-img img {
-	height: 176px;
-	width: 176px;
-	margin: 0 auto;
+	position: absolute;
+	/* height: calc()
+	width: var(--planet-size); */
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%);
+}
+
+.planet-img .planet-geo-img {
+	/* position: absolute;
+	height: 199px;
+	width: 163px;
+	bottom: -70px;
+	left: 220px; */
+	position: absolute;
+	height: 132px;
+	width: auto;
+	top: 200px;
 }
 
 .mobile-info-selection {
@@ -77,9 +92,8 @@
 	justify-content: center;
 	display: flex;
 	flex-direction: column;
-	width: 80%;
+	width: 330px;
 	margin: 0 auto;
-	flex-wrap: wrap;
 }
 
 .planet-information h1 {
@@ -98,11 +112,6 @@
 	color: white;
 	line-height: 22px;
 	word-wrap: break-word;
-}
-
-.planet-geo-img {
-	display: absolute;
-	left: 0;
 }
 
 .planet-stats-bottom {

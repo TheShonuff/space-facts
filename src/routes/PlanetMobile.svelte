@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { menu } from './Stores';
+	import { imgSizes, colors } from './helpers';
 
 	import Data from '../assets/data/data.json';
 	let infoDisplay = 1;
@@ -9,18 +10,8 @@
 		selection = value - 1;
 	});
 
-	const colors = [
-		'#419EBB',
-		'#EDA249',
-		'#6D2ED5',
-		'#D14C32',
-		'#D83A34',
-		'#CD5120',
-		'#1EC1A2',
-		'#2D68F0'
-	];
-
-	console.log('Mobile Loaded');
+	$: imgSize = imgSizes[selection].Mobile;
+	console.log(imgSizes);
 </script>
 
 <svelte:head>
@@ -43,11 +34,11 @@
 
 		<div class="planet-img">
 			{#if infoDisplay === 1}
-				<img src={`${Data[selection].images.planet}`} alt="planet" />
+				<img style="height:{imgSize}px" src={Data[selection].images.planet} alt="planet" />
 			{:else if infoDisplay === 2}
-				<img src={Data[selection].images.internal} alt="planet" />
+				<img style="height:{imgSize}px" src={Data[selection].images.internal} alt="planet" />
 			{:else if infoDisplay === 3}
-				<!-- <img src={Data[selection].images.planet} alt="planet" /> -->
+				<img style="height:{imgSize}px" src={Data[selection].images.planet} alt="planet" />
 				<img class="planet-geo-img" src={Data[selection].images.geology} alt="planet geology" />
 			{/if}
 		</div>
