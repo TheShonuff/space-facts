@@ -33,7 +33,7 @@ Users should be able to:
 ### Links
 
 - Solution URL: [Add solution URL here](https://github.com/TheShonuff/space-facts)
-- Live Site URL: [Add live site URL here](https://creative-gelato-398182.netlify.app)
+- Live Site URL: [Live Site](https://creative-gelato-398182.netlify.app)
 
 ## My process
 
@@ -56,5 +56,3 @@ I'm going to continue to develope with Svelte in the future. There was recently 
 - Website - [Joe Irvine](https://www.joeirvine.com)
 - Frontend Mentor - [@TheShonuff](https://www.frontendmentor.io/profile/TheShonuff)
 - Twitter - [@TheDevShonuff](https://twitter.com/TheDevShonuff)
-
-**Note: Delete this note and add/remove/edit lines above based on what links you'd like to share.**
