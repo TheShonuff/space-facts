@@ -31,17 +31,6 @@
 		{ Name: 'Neptune', Desktop: 450, Tablet: 285, Mobile: 173 }
 	];
 
-	function styleSelector() {
-		let size = 'Desktop';
-		if ($screenwidth < 900) {
-			size = 'Tablet';
-		}
-		console.log(`current size is ${size}`);
-		let result = imgSizes[selection].Tablet;
-		console.log(result);
-		return result;
-	}
-
 	$: imgSize = $screenwidth < 900 ? imgSizes[selection].Tablet : imgSizes[selection].Desktop;
 </script>
 
