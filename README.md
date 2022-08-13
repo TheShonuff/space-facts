@@ -32,7 +32,7 @@ Users should be able to:
 
 ### Links
 
-- Solution URL: [Add solution URL here](https://github.com/TheShonuff/space-facts)
+- Solution URL: [Solution Link](https://www.frontendmentor.io/solutions/planet-facts-I36phQJB-o)
 - Live Site URL: [Live Site](https://creative-gelato-398182.netlify.app)
 
 ## My process
