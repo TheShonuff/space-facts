@@ -45,8 +45,6 @@
 	{:else}
 		<PlanetMobile />
 	{/if}
-	<h2>inner Width: {displayWidth}</h2>
-	<h2>innher height: {innerHeight}</h2>
 </div>
 
 <style global>
