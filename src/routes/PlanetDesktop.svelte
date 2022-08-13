@@ -9,8 +9,6 @@
 		selection = value - 1;
 	});
 
-	console.log(Data[1]);
-
 	const colors = [
 		'#419EBB',
 		'#EDA249',
@@ -32,6 +30,19 @@
 		{ Name: 'Uranus', Desktop: 458, Tablet: 290, Mobile: 176 },
 		{ Name: 'Neptune', Desktop: 450, Tablet: 285, Mobile: 173 }
 	];
+
+	function styleSelector() {
+		let size = 'Desktop';
+		if ($screenwidth < 900) {
+			size = 'Tablet';
+		}
+		console.log(`current size is ${size}`);
+		let result = imgSizes[selection].Tablet;
+		console.log(result);
+		return result;
+	}
+
+	$: imgSize = $screenwidth < 900 ? imgSizes[selection].Tablet : imgSizes[selection].Desktop;
 </script>
 
 <svelte:head>
@@ -40,14 +51,11 @@
 
 <div class="container">
 	<div class="main-content">
-		<div
-			class="planet-img"
-			style={$screenwidth > 900
-				? '--planet-size:{imgSizes[selection].Desktop}'
-				: '--planet-size:{imgSizes[selection].Tablet}'}
-		>
+		<div class="planet-img" style="--planet-size:{imgSize}">
 			{#if infoDisplay === 1}
-				<img src={`${Data[selection].images.planet}`} alt="planet" />
+				<div class="the-planet">
+					<img style="height:{imgSize}px" src={Data[selection].images.planet} alt="planet" />
+				</div>
 			{:else if infoDisplay === 2}
 				<img src={Data[selection].images.internal} alt="planet" />
 			{:else if infoDisplay === 3}
