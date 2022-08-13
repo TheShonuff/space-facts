@@ -4,7 +4,6 @@
 
 .container {
 	margin: 0 auto;
-	padding-top: 50px;
 	max-width: 1200px;
 	min-width: 960px;
 }
@@ -50,6 +49,7 @@
 	flex-direction: column;
 	width: 350px;
 	padding-left: 100px;
+	padding-top: 50px;
 }
 
 .source {
