@@ -1,15 +1,16 @@
 <script lang="ts">
 	import { menu, screenwidth } from './Stores';
 	import { imgSizes, colors } from './helpers';
+	import { fade, fly } from 'svelte/transition';
 
 	import Data from '../assets/data/data.json';
+	import { transition_in } from 'svelte/internal';
 	let infoDisplay = 1;
 	let selection: number;
 
 	menu.subscribe((value) => {
 		selection = value - 1;
 	});
-
 	$: imgSize = $screenwidth < 900 ? imgSizes[selection].Tablet : imgSizes[selection].Desktop;
 </script>
 
@@ -20,16 +21,23 @@
 <div class="container">
 	<div class="main-content">
 		<div class="planet-img" style="--planet-size:{imgSize}">
-			{#if infoDisplay === 1}
-				<div class="the-planet">
+			{#key selection}
+				{#if infoDisplay === 1}
+					<div class="the-planet">
+						<img
+							transition:fade={{ duration: 500 }}
+							style="height:{imgSize}px"
+							src={Data[selection].images.planet}
+							alt="planet"
+						/>
+					</div>
+				{:else if infoDisplay === 2}
+					<img style="height:{imgSize}px" src={Data[selection].images.internal} alt="planet" />
+				{:else if infoDisplay === 3}
 					<img style="height:{imgSize}px" src={Data[selection].images.planet} alt="planet" />
-				</div>
-			{:else if infoDisplay === 2}
-				<img style="height:{imgSize}px" src={Data[selection].images.internal} alt="planet" />
-			{:else if infoDisplay === 3}
-				<img style="height:{imgSize}px" src={Data[selection].images.planet} alt="planet" />
-				<img class="planet-geo-img" src={Data[selection].images.geology} alt="planet geology" />
-			{/if}
+					<img class="planet-geo-img" src={Data[selection].images.geology} alt="planet geology" />
+				{/if}
+			{/key}
 		</div>
 		<div class="planet-facts-side">
 			<div class="planet-facts-information">
