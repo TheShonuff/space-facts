@@ -4,8 +4,32 @@
 	height: 100%;
 	width: 100%;
 }
+
+.stars {
+	position: absolute;
+	top: 0;
+	height: 200%;
+	width: 200%;
+	background-image: url(/src/assets/background-stars.svg);
+	background-repeat: repeat-x;
+	z-index: 0;
+
+	animation: animStar 200s linear infinite;
+}
+
+@keyframes animStar {
+	from {
+		transform: translateY(-10px);
+	}
+
+	to {
+		transform: translateX(-2000px);
+	}
+}
+
 body {
 	background-color: #070724;
+	overflow: hidden;
 }
 html body {
 	margin: 0;
@@ -24,6 +48,7 @@ nav {
 	border-width: thin;
 	padding-top: 22px;
 	padding-bottom: 22px;
+	z-index: 100;
 }
 #menu {
 	display: flex;
@@ -34,6 +59,7 @@ nav {
 	color: white;
 	line-height: 25px;
 	list-style: none;
+	z-index: 100;
 }
 ul {
 	margin: 0;

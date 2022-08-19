@@ -44,6 +44,7 @@
 	{:else}
 		<PlanetMobile />
 	{/if}
+	<div class="stars">something</div>
 </div>
 
 <style global src="../styles/index.css">
