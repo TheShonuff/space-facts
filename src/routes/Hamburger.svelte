@@ -51,6 +51,7 @@
 		background-color: rgba(0, 0, 0, 0);
 		border: none;
 		width: 50px;
+		z-index: 100;
 	}
 
 	svg {

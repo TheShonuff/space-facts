@@ -1,3 +1,7 @@
+* {
+	--font-size: calc((var(--pixels) / 16) * 1);
+}
+
 .container {
 	margin: 0 auto;
 	width: 100%;
@@ -60,7 +64,9 @@
 .btn p {
 	padding-left: 9px;
 	font-family: 'League Spartan', sans-serif;
-	font-size: 9px;
+	/* font-size: 9px; */
+	--pixels: 9;
+	font-size: var(--font-size);
 	line-height: 10px;
 	font-weight: 700;
 	font-style: normal;
@@ -70,7 +76,9 @@
 .btn-selected p {
 	padding-left: 9px;
 	font-family: 'League Spartan', sans-serif;
-	font-size: 9px;
+	/* font-size: 9px; */
+	--pixel: 9;
+	font-size: var(--font-size);
 	line-height: 10px;
 	font-weight: 700;
 	font-style: normal;
@@ -100,7 +108,8 @@
 .planet-information h1 {
 	font-family: 'Antonio', sans-serif;
 	font-weight: 400;
-	font-size: 40px;
+	/* font-size: 40px; */
+
 	text-align: center;
 }
 
