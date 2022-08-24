@@ -29,7 +29,7 @@
 
 body {
 	background-color: #070724;
-	overflow: hidden;
+	/* overflow: hidden; */
 }
 html body {
 	margin: 0;
